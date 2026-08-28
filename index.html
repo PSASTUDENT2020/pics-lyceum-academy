@@ -79,6 +79,14 @@
     color: var(--gold-soft);
   }
 
+  .seal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 4px;
+  }
+
   .identity-top {
     display: flex;
     align-items: center;
@@ -239,7 +247,7 @@
 
   <section class="identity">
     <div class="identity-top">
-      <div class="seal"><span>PLA</span></div>
+      <div class="seal" id="logoSeal"><span>PLA</span></div>
       <div class="name">Pics Lyceum Academy</div>
     </div>
 
@@ -290,6 +298,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="js/supabase-client.js"></script>
+<script src="js/logo.js"></script>
 <script>
   const form = document.getElementById("loginForm");
   const errorBox = document.getElementById("errorBox");
