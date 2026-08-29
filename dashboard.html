@@ -3,331 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard | Pics Lyceum Academy</title>
+<title>Dashboard</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --ink: #16241C;
-    --ink-soft: #5C6B62;
-    --green-deep: #0F2E20;
-    --green-mid: #163D2A;
-    --green-hover: #1F4A33;
-    --gold: #B08D3E;
-    --gold-soft: #E7DCC0;
-    --bg: #F6F8F5;
-    --white: #FFFFFF;
-    --border: #E1E7E2;
-    --error-bg: #FBEAEA;
-    --error-text: #8C2F2F;
+    --ink: #16241C; --ink-soft: #5C6B62;
+    --green-deep: #0F2E20; --green-mid: #163D2A; --green-hover: #1F4A33;
+    --gold: #B08D3E; --gold-soft: #E7DCC0;
+    --bg: #F6F8F5; --white: #FFFFFF; --border: #E1E7E2;
+    --error-bg: #FBEAEA; --error-text: #8C2F2F;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    color: var(--ink);
-    background: var(--bg);
-  }
-
+  body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--bg); }
   .layout { display: flex; min-height: 100vh; }
 
-  /* ---------- SIDEBAR ---------- */
-
   .sidebar {
-    width: 264px;
-    background: var(--green-deep);
-    color: #EAF2EC;
-    padding: 26px 16px;
-    position: fixed;
-    inset: 0 auto 0 0;
-    overflow-y: auto;
+    width: 264px; background: var(--green-deep); color: #EAF2EC;
+    padding: 26px 16px; position: fixed; inset: 0 auto 0 0; overflow-y: auto;
   }
-
   .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 8px 22px;
-    border-bottom: 1px solid rgba(234,242,236,0.12);
-    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px; padding: 0 8px 22px;
+    border-bottom: 1px solid rgba(234,242,236,0.12); margin-bottom: 18px;
   }
-
   .seal-sm {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 1.2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    width: 42px; height: 42px; border-radius: 50%; border: 1.2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;
+  }
+  .seal-sm span { font-family: 'Fraunces', serif; font-size: 12.5px; font-weight: 600; color: var(--gold-soft); }
+  .seal-sm img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; padding: 3px; }
+  .brand-text .name { font-family: 'Fraunces', serif; font-size: 14px; font-weight: 600; line-height: 1.3; }
+  .brand-text .role-tag { font-size: 11px; color: #9FB8A8; margin-top: 2px; }
+
+  .academy-picker { margin-bottom: 16px; }
+  .academy-picker label {
+    display: block; font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px;
+    color: #7FA491; margin-bottom: 6px; padding: 0 4px;
+  }
+  .academy-picker select {
+    width: 100%; padding: 9px 10px; border-radius: 8px; border: 1px solid rgba(234,242,236,0.2);
+    background: var(--green-hover); color: white; font-size: 13px; font-family: 'Inter', sans-serif;
   }
 
-  .seal-sm span {
-    font-family: 'Fraunces', serif;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--gold-soft);
-  }
-
-  .seal-sm img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-    padding: 3px;
-  }
-
-  .brand-text .name {
-    font-family: 'Fraunces', serif;
-    font-size: 14.5px;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-
-  .brand-text .role-tag {
-    font-size: 11px;
-    color: #9FB8A8;
-    margin-top: 2px;
-  }
-
-  .nav-title {
-    font-size: 10.5px;
-    color: #7FA491;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin: 18px 10px 8px;
-  }
-
+  .nav-title { font-size: 10.5px; color: #7FA491; text-transform: uppercase; letter-spacing: 1.2px; margin: 18px 10px 8px; }
   .nav-button {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    border: 0;
-    background: transparent;
-    color: #DCEBE2;
-    padding: 10px 12px;
-    margin-bottom: 3px;
-    border-radius: 8px;
-    text-align: left;
-    cursor: pointer;
-    font-size: 13.5px;
-    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; gap: 10px; width: 100%; border: 0; background: transparent;
+    color: #DCEBE2; padding: 10px 12px; margin-bottom: 3px; border-radius: 8px; text-align: left;
+    cursor: pointer; font-size: 13.5px; font-family: 'Inter', sans-serif;
   }
-
-  .nav-button:hover, .nav-button.active {
-    background: var(--green-hover);
-    color: #FFFFFF;
-  }
-
+  .nav-button:hover, .nav-button.active { background: var(--green-hover); color: #FFFFFF; }
   .nav-button.active { box-shadow: inset 2px 0 0 var(--gold); }
 
-  /* ---------- MAIN ---------- */
-
-  .main {
-    margin-left: 264px;
-    width: calc(100% - 264px);
-    padding: 26px 30px;
-  }
-
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-    gap: 14px;
-  }
-
-  .topbar h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 25px;
-    font-weight: 600;
-  }
-
+  .main { margin-left: 264px; width: calc(100% - 264px); padding: 26px 30px; }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px; }
+  .topbar h1 { font-family: 'Fraunces', serif; font-size: 25px; font-weight: 600; }
   .topbar-right { display: flex; align-items: center; gap: 12px; }
-
-  .year-pill, .role-pill {
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 12.5px;
-    font-weight: 600;
-    font-family: 'IBM Plex Mono', monospace;
-  }
-
-  .year-pill { background: var(--white); border: 1px solid var(--border); color: var(--ink-soft); }
-  .role-pill { background: var(--gold-soft); color: #6B5323; }
-
-  .security-message {
-    display: none;
-    background: var(--error-bg);
-    color: var(--error-text);
-    padding: 13px 16px;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    font-size: 13.5px;
+  .role-pill {
+    padding: 8px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace; background: var(--gold-soft); color: #6B5323;
   }
 
   .welcome {
-    background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
-    color: white;
-    padding: 30px 32px;
-    border-radius: 16px;
-    margin-bottom: 26px;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, var(--green-mid), var(--green-deep)); color: white;
+    padding: 30px 32px; border-radius: 16px; margin-bottom: 26px; position: relative; overflow: hidden;
   }
-
   .welcome::after {
-    content: "";
-    position: absolute;
-    right: -40px;
-    top: -40px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 1px solid rgba(176,141,62,0.3);
+    content: ""; position: absolute; right: -40px; top: -40px; width: 180px; height: 180px;
+    border-radius: 50%; border: 1px solid rgba(176,141,62,0.3);
   }
+  .welcome h2 { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 8px; font-weight: 600; }
+  .welcome p { color: #CFE0D5; font-size: 13.5px; line-height: 1.6; max-width: 560px; }
 
-  .welcome h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    margin-bottom: 8px;
-    font-weight: 600;
-  }
+  .section-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; margin-bottom: 14px; }
 
-  .welcome p {
-    color: #CFE0D5;
-    font-size: 13.5px;
-    line-height: 1.6;
-    max-width: 560px;
-  }
-
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
-
-  .programs-row {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
-  }
-
-  .program-seal {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    padding: 8px 16px 8px 10px;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-
-  .program-seal .dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--gold-soft);
-    color: #6B5323;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-family: 'Fraunces', serif;
-    font-weight: 700;
-  }
-
-  .program-seal.add-new {
-    background: var(--green-deep);
-    color: #EAF2EC;
-    border: none;
-    cursor: pointer;
-  }
-
-  .program-seal.add-new .dot { background: var(--gold); color: var(--green-deep); }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 30px;
-  }
-
-  .card {
-    background: var(--white);
-    padding: 20px 22px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-  }
-
-  .card-label {
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    margin-bottom: 10px;
-  }
-
-  .card-value {
-    font-family: 'Fraunces', serif;
-    font-size: 30px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; }
+  .card { background: var(--white); padding: 20px 22px; border-radius: 14px; border: 1px solid var(--border); }
+  .card-label { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 10px; }
+  .card-value { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 600; color: var(--ink); }
   .card-value.loading { color: #B7C4BC; font-family: 'Inter', sans-serif; font-size: 18px; }
 
-  .modules {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+  .quick-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+  .quick-action {
+    background: var(--white); border: 1px solid var(--border); border-left: 3px solid var(--gold);
+    padding: 12px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .quick-action:hover { background: #FBFBF9; }
+
+  .empty-state {
+    background: var(--white); border: 1px dashed var(--border); border-radius: 14px;
+    padding: 40px; text-align: center; color: var(--ink-soft); font-size: 13.5px;
   }
 
-  .module {
-    background: var(--white);
-    padding: 20px 22px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    cursor: pointer;
-    transition: transform .15s, box-shadow .15s;
-  }
-
-  .module:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(15,46,32,0.08);
-  }
-
-  .module h3 {
-    font-size: 15px;
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-
-  .module p {
-    color: var(--ink-soft);
-    font-size: 12.5px;
-    line-height: 1.5;
-  }
-
-  @media (max-width: 1000px) {
-    .cards { grid-template-columns: repeat(2, 1fr); }
-    .modules { grid-template-columns: repeat(2, 1fr); }
-  }
-
+  @media (max-width: 1000px) { .cards { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 700px) {
-    .sidebar { width: 220px; }
-    .main { margin-left: 220px; width: calc(100% - 220px); padding: 16px; }
-    .cards, .modules { grid-template-columns: 1fr; }
+    .sidebar { width: 220px; } .main { margin-left: 220px; width: calc(100% - 220px); padding: 16px; }
+    .cards { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -338,45 +110,41 @@
 
   <aside class="sidebar">
     <div class="brand">
-      <div class="seal-sm" id="logoSeal"><span>PLA</span></div>
+      <div class="seal-sm" id="logoSeal"><span>PLG</span></div>
       <div class="brand-text">
-        <div class="name" id="sidebarSchoolName">Pics Lyceum Academy</div>
-        <div class="role-tag" id="sidebarRole">Administration System</div>
+        <div class="name" id="sidebarOrgName">Loading...</div>
+        <div class="role-tag" id="sidebarRole"></div>
       </div>
     </div>
 
-    <div class="nav-title">Main</div>
-    <button class="nav-button active" onclick="goTo('dashboard.html')">🏠 Dashboard</button>
+    <div class="academy-picker" id="academyPickerWrap" style="display:none;">
+      <label>Viewing Academy</label>
+      <select id="academySelect"></select>
+    </div>
 
-    <div class="nav-title">School</div>
-    <button class="nav-button" onclick="goTo('students.html')">🎓 Students</button>
-    <button class="nav-button" onclick="goTo('staff.html')">👩‍🏫 Teachers &amp; Staff</button>
-    <button class="nav-button" onclick="goTo('parents.html')">👪 Parents / Guardians</button>
+    <div class="nav-title">Overview</div>
+    <button class="nav-button active">🏠 Dashboard</button>
+    <button class="nav-button" id="academiesNav" onclick="goTo('academies.html')" style="display:none;">🏫 Academies</button>
+    <button class="nav-button" id="orgSettingsNav" onclick="goTo('organization-settings.html')" style="display:none;">🏛️ Organization Settings</button>
+
+    <div class="nav-title">Academy</div>
+    <button class="nav-button" onclick="goTo('academy-settings.html')">⚙️ Academy Settings</button>
     <button class="nav-button" onclick="goTo('programs.html')">📚 Programs &amp; Classes</button>
+    <button class="nav-button" onclick="goTo('students.html')">🎓 Students</button>
+    <button class="nav-button" onclick="goTo('staff.html')">👩‍🏫 Staff</button>
+    <button class="nav-button" onclick="goTo('guardians.html')">👪 Parents / Guardians</button>
     <button class="nav-button" onclick="goTo('attendance.html')">📅 Attendance</button>
-    <button class="nav-button" onclick="goTo('exams.html')">📝 Exams &amp; Results</button>
-
-    <div class="nav-title">Finance</div>
-    <button class="nav-button" onclick="goTo('finance.html')">💰 Finance</button>
-    <button class="nav-button" onclick="goTo('reports.html')">📊 Financial Reports</button>
-
-    <div class="nav-title">Administration</div>
-    <button class="nav-button" onclick="goTo('settings.html')">⚙️ School Settings</button>
-    <button class="nav-button" onclick="goTo('users.html')">👤 User Management</button>
-    <button class="nav-button" onclick="goTo('activity-log.html')">📋 Activity Log</button>
+    <button class="nav-button" id="usersNav" onclick="goTo('users.html')">👤 User Management</button>
+    <button class="nav-button" onclick="goTo('whatsapp.html')">💬 WhatsApp Messages</button>
 
     <div class="nav-title">Account</div>
     <button class="nav-button" id="logoutButton">🚪 Logout</button>
   </aside>
 
   <main class="main">
-
-    <div id="securityMessage" class="security-message"></div>
-
     <div class="topbar">
       <h1>Dashboard</h1>
       <div class="topbar-right">
-        <div class="year-pill" id="academicYearPill">—</div>
         <div class="role-pill" id="rolePill">—</div>
       </div>
     </div>
@@ -386,71 +154,28 @@
       <p id="welcomeText">Loading your account...</p>
     </section>
 
-    <h2 class="section-title">Active Programs</h2>
-    <div class="programs-row" id="programsRow">
-      <!-- populated dynamically -->
+    <div id="noAcademyState" class="empty-state" style="display:none;">
+      No academy is assigned to your account yet. Contact your Group Admin to get access to an academy.
     </div>
 
-    <h2 class="section-title">School Overview</h2>
-    <section class="cards">
-      <div class="card">
-        <div class="card-label">Total Students</div>
-        <div id="studentCount" class="card-value loading">...</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Teachers &amp; Staff</div>
-        <div id="staffCount" class="card-value loading">...</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Class Levels</div>
-        <div id="classCount" class="card-value loading">...</div>
-      </div>
-      <div class="card">
-        <div class="card-label">System Users</div>
-        <div id="userCount" class="card-value loading">...</div>
-      </div>
-    </section>
+    <div id="dashboardContent" style="display:none;">
+      <h2 class="section-title">Academy Overview</h2>
+      <section class="cards">
+        <div class="card"><div class="card-label">Total Students</div><div id="studentCount" class="card-value loading">...</div></div>
+        <div class="card"><div class="card-label">Staff</div><div id="staffCount" class="card-value loading">...</div></div>
+        <div class="card"><div class="card-label">Active Classes</div><div id="classCount" class="card-value loading">...</div></div>
+        <div class="card"><div class="card-label">Active Programs</div><div id="programCount" class="card-value loading">...</div></div>
+      </section>
 
-    <h2 class="section-title">Administration Modules</h2>
-    <section class="modules">
-      <div class="module" onclick="goTo('students.html')">
-        <h3>🎓 Students</h3>
-        <p>Register and manage student records, admissions, and academic assignment.</p>
-      </div>
-      <div class="module" onclick="goTo('staff.html')">
-        <h3>👩‍🏫 Teachers &amp; Staff</h3>
-        <p>Manage employee records, designations, and staff information.</p>
-      </div>
-      <div class="module" onclick="goTo('parents.html')">
-        <h3>👪 Parents / Guardians</h3>
-        <p>Manage guardian information and student relationships.</p>
-      </div>
-      <div class="module" onclick="goTo('programs.html')">
-        <h3>📚 Programs &amp; Classes</h3>
-        <p>Configure programs, class levels, sections, and subjects — including new courses.</p>
-      </div>
-      <div class="module" onclick="goTo('attendance.html')">
-        <h3>📅 Attendance</h3>
-        <p>Mark and review daily attendance across every class.</p>
-      </div>
-      <div class="module" onclick="goTo('exams.html')">
-        <h3>📝 Exams &amp; Results</h3>
-        <p>Manage examinations, marks, grades, and report cards.</p>
-      </div>
-      <div class="module" onclick="goTo('finance.html')">
-        <h3>💰 Finance</h3>
-        <p>Manage fees, payments, expenses, and receipts.</p>
-      </div>
-      <div class="module" onclick="goTo('reports.html')">
-        <h3>📊 Reports</h3>
-        <p>Generate administrative, academic, and financial reports.</p>
-      </div>
-      <div class="module" onclick="goTo('settings.html')">
-        <h3>⚙️ School Settings</h3>
-        <p>Edit the school name, address, phone, logo, and academic year.</p>
-      </div>
-    </section>
-
+      <h2 class="section-title">Quick Actions</h2>
+      <section class="quick-actions">
+        <div class="quick-action" onclick="goTo('students.html')">➕ Add Student</div>
+        <div class="quick-action" onclick="goTo('staff.html')">➕ Add Staff</div>
+        <div class="quick-action" onclick="goTo('programs.html')">➕ Add Course</div>
+        <div class="quick-action" onclick="goTo('attendance.html')">✅ Mark Attendance</div>
+        <div class="quick-action" onclick="goTo('whatsapp.html')">💬 WhatsApp Messages</div>
+      </section>
+    </div>
   </main>
 </div>
 
@@ -462,104 +187,105 @@
 
   function goTo(page) { window.location.href = page; }
 
-  async function getCount(table) {
-    const { count, error } = await supabaseClient
-      .from(table)
-      .select("*", { count: "exact", head: true });
+  const roleDisplayNames = {
+    group_admin: "Group Admin", academy_admin: "Academy Admin", teacher: "Teacher",
+    finance: "Finance", finance_manager: "Finance Manager", accountant: "Accountant", parent: "Parent"
+  };
 
-    if (error) {
-      console.error("Count error:", table, error);
-      return 0;
-    }
+  async function getCount(table, academyFilterColumn, academyId) {
+    let query = supabaseClient.from(table).select("*", { count: "exact", head: true });
+    if (academyFilterColumn && academyId) query = query.eq(academyFilterColumn, academyId);
+    const { count, error } = await query;
+    if (error) { console.error("Count error:", table, error); return 0; }
     return count || 0;
   }
 
-  async function loadPrograms() {
-    const row = document.getElementById("programsRow");
-    const { data: programs, error } = await supabaseClient
-      .from("programs")
-      .select("id, name")
-      .eq("is_active", true)
-      .order("created_at");
+  async function loadAcademyOverview(academyId) {
+    document.getElementById("noAcademyState").style.display = "none";
+    document.getElementById("dashboardContent").style.display = "block";
 
-    if (error || !programs) return;
-
-    row.innerHTML = programs.map(p => `
-      <div class="program-seal">
-        <span class="dot">${p.name.slice(0,2).toUpperCase()}</span>
-        ${p.name}
-      </div>
-    `).join("") + `
-      <div class="program-seal add-new" onclick="goTo('programs.html')">
-        <span class="dot">+</span>
-        Add New Course
-      </div>
-    `;
-  }
-
-  async function loadDashboard() {
-    const [students, staff, classes, users] = await Promise.all([
-      getCount("students"),
-      getCount("staff"),
-      getCount("class_levels"),
-      getCount("profiles"),
+    const [students, staff, programs] = await Promise.all([
+      getCount("students", "academy_id", academyId),
+      getCount("staff", "academy_id", academyId),
+      getCount("programs", "academy_id", academyId),
     ]);
 
     document.getElementById("studentCount").textContent = students;
     document.getElementById("studentCount").classList.remove("loading");
     document.getElementById("staffCount").textContent = staff;
     document.getElementById("staffCount").classList.remove("loading");
-    document.getElementById("classCount").textContent = classes;
+    document.getElementById("programCount").textContent = programs;
+    document.getElementById("programCount").classList.remove("loading");
+
+    // Class levels are nested under programs — count via a join
+    const { count: classCount } = await supabaseClient
+      .from("class_levels")
+      .select("id, programs!inner(academy_id)", { count: "exact", head: true })
+      .eq("programs.academy_id", academyId);
+    document.getElementById("classCount").textContent = classCount || 0;
     document.getElementById("classCount").classList.remove("loading");
-    document.getElementById("userCount").textContent = users;
-    document.getElementById("userCount").classList.remove("loading");
   }
-
-  async function applySchoolBranding() {
-    const settings = await getSchoolSettings();
-    if (!settings) return;
-
-    document.title = "Dashboard | " + settings.school_name;
-    document.getElementById("sidebarSchoolName").textContent = settings.school_name;
-
-    // Academic year pill
-    if (settings.academic_year_id) {
-      const { data: year } = await supabaseClient
-        .from("academic_years")
-        .select("year_label")
-        .eq("id", settings.academic_year_id)
-        .single();
-      if (year) document.getElementById("academicYearPill").textContent = year.year_label;
-    }
-  }
-
-  const roleDisplayNames = {
-    admin: "Administrator",
-    teacher: "Teacher",
-    accountant: "Accountant"
-  };
 
   async function startDashboard() {
     const profile = await requireAuth();
     if (!profile) return;
-
     setupLogout();
 
-    const displayName = roleDisplayNames[profile.role] || profile.role;
-    document.getElementById("rolePill").textContent = "🔐 " + displayName;
-    document.getElementById("sidebarRole").textContent = displayName + " Access";
+    const org = await getOrganization();
+    if (org) {
+      document.title = "Dashboard | " + org.name;
+      document.getElementById("sidebarOrgName").textContent = org.name;
+    }
 
-    document.getElementById("welcomeTitle").textContent =
-      "Welcome, " + (profile.full_name || "there");
-    document.getElementById("welcomeText").textContent =
-      "You're signed in as " + displayName.toLowerCase() +
-      " for the Pics Lyceum Academy administration system.";
+    const academies = await getUserAcademies(profile);
 
-    await Promise.all([
-      applySchoolBranding(),
-      loadPrograms(),
-      loadDashboard()
-    ]);
+    if (profile.is_group_admin) {
+      document.getElementById("academiesNav").style.display = "flex";
+      document.getElementById("orgSettingsNav").style.display = "flex";
+      document.getElementById("usersNav").style.display = "flex";
+    }
+
+    document.getElementById("rolePill").textContent = "🔐 " +
+      (profile.is_group_admin ? "Group Admin" : (academies[0] ? roleDisplayNames[academies[0].role] : "No Role"));
+    document.getElementById("sidebarRole").textContent =
+      profile.is_group_admin ? "Group Admin Access" : (academies[0] ? roleDisplayNames[academies[0].role] + " Access" : "");
+
+    document.getElementById("welcomeTitle").textContent = "Welcome, " + (profile.full_name || "there");
+
+    if (academies.length === 0) {
+      document.getElementById("welcomeText").textContent = "No academy access assigned yet.";
+      document.getElementById("noAcademyState").style.display = "block";
+      return;
+    }
+
+    // Academy switcher — shown whenever a user has more than one academy
+    // (always true for Group Admin once multiple academies exist)
+    if (academies.length > 1) {
+      const wrap = document.getElementById("academyPickerWrap");
+      const select = document.getElementById("academySelect");
+      wrap.style.display = "block";
+      select.innerHTML = academies.map(a => `<option value="${a.id}">${a.name}</option>`).join("");
+
+      const saved = getCurrentAcademyId();
+      const initial = academies.find(a => a.id === saved) ? saved : academies[0].id;
+      select.value = initial;
+      setCurrentAcademyId(initial);
+
+      select.addEventListener("change", () => {
+        setCurrentAcademyId(select.value);
+        loadAcademyOverview(select.value);
+        document.getElementById("welcomeText").textContent =
+          "Viewing " + academies.find(a => a.id === select.value).name + ".";
+      });
+
+      document.getElementById("welcomeText").textContent = "Viewing " + academies.find(a => a.id === initial).name + ".";
+      await loadAcademyOverview(initial);
+    } else {
+      setCurrentAcademyId(academies[0].id);
+      document.getElementById("welcomeText").textContent =
+        "You're signed in for " + academies[0].name + ".";
+      await loadAcademyOverview(academies[0].id);
+    }
   }
 
   startDashboard();
