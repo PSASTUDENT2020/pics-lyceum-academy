@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sign In | Pics Lyceum Academy</title>
+<title id="pageTitle">Sign In</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -247,23 +247,18 @@
 
   <section class="identity">
     <div class="identity-top">
-      <div class="seal" id="logoSeal"><span>PLA</span></div>
-      <div class="name">Pics Lyceum Academy</div>
+      <div class="seal" id="logoSeal"><span>...</span></div>
+      <div class="name" id="orgNameLabel">Loading...</div>
     </div>
 
     <div class="identity-mid">
       <div class="eyebrow">Administration System</div>
-      <h1>One record,<br>every stage of learning.</h1>
+      <h1>One group,<br>every academy in view.</h1>
       <p>
-        From Nursery through Grade 12 — and the academic
-        programs still to come — a single system for
-        admissions, attendance, and academic records.
+        A single system for every academy under the group —
+        admissions, attendance, staff, and academic records,
+        all in one place.
       </p>
-    </div>
-
-    <div class="identity-bottom">
-      <span>Lahore, Pakistan</span>
-      <span>Est. records since founding</span>
     </div>
   </section>
 
@@ -303,6 +298,31 @@
   const form = document.getElementById("loginForm");
   const errorBox = document.getElementById("errorBox");
   const signinBtn = document.getElementById("signinBtn");
+
+  // Load the organization's name dynamically — never hardcoded,
+  // so a future rename in Organization Settings shows up here
+  // automatically with no code change.
+  (async () => {
+    const { data: org } = await supabaseClient
+      .from("organizations")
+      .select("name")
+      .limit(1)
+      .single();
+
+    if (org) {
+      document.getElementById("pageTitle").textContent = "Sign In | " + org.name;
+      document.getElementById("orgNameLabel").textContent = org.name;
+      const sealSpan = document.querySelector("#logoSeal span");
+      if (sealSpan) {
+        sealSpan.textContent = org.name
+          .split(" ")
+          .map(w => w[0])
+          .join("")
+          .slice(0, 3)
+          .toUpperCase();
+      }
+    }
+  })();
 
   // If already logged in, skip straight to dashboard.
   (async () => {
